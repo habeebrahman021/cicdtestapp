@@ -11,7 +11,7 @@ class HomeScreen extends StatelessWidget {
           const Text('This is a text'),
           TextButton(
             onPressed: () {},
-            child: const Text("Submit"),
+            child: const Text("Submit2"),
           ),
         ],
       ),
