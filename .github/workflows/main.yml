@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  build_and_deploy:
+  setup:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -17,8 +17,14 @@ jobs:
           channel: stable
       - name: Install Dependencies
         run: flutter pub get
+  test:
+    runs-on: ubuntu-latest
+    steps:
       - name: Run Test
         run: flutter test
+  build:
+    runs-on: ubuntu-latest
+    steps:
       - name: Build APK
         run: flutter build apk
         env:
