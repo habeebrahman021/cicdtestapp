@@ -29,6 +29,6 @@ jobs:
         env:
           FIREBASE_TOKEN: ${{secrets.FIREBASE_TOKEN}}
       - name: Deploy to Firebase App Distribution
-        run: firebase appdistribution:distribute build/app/outputs/apk/release/app-release.apk --app 1:291046357082:android:749c7568a2cdbfa7ca4063 --token $FIREBASE_TOKEN
+        run: firebase appdistribution:distribute build/app/outputs/apk/release/app-release.apk --app 1:291046357082:android:749c7568a2cdbfa7ca4063
         env:
-          FIREBASE_TOKEN: ${{secrets.FIREBASE_TOKEN}}
+          GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
