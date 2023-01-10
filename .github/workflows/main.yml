@@ -6,22 +6,28 @@ on:
       - main
 
 jobs:
-  setup:
+#  build:
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: Checkout
+#        uses: actions/checkout@v2
+#      - name: Setup Flutter
+#        uses: subosito/flutter-action@v2
+#        with:
+#          channel: 'stable'
+#          cache: true
+#      - name: Install Dependencies
+#        run: flutter pub get
+#      - name: Run Test
+#        run: flutter test
+#      - name: Build APK
+#        run: flutter build apk
+#        env:
+#          FLUTTER_BUILD_MODE: release
+  deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: Setup Flutter
-        uses: subosito/flutter-action@v2
-        with:
-          channel: 'stable'
-          cache: true
-      - name: Install Dependencies
-        run: flutter pub get
-      - name: Run Test
-        run: flutter test
-      - name: Build APK
-        run: flutter build apk
+      - name: Setup Firebase CLI
+        run: npm install -g firebase-tools
         env:
-          FLUTTER_BUILD_MODE: release
-
+          FIREBASE_TOKEN: ${{secrets.FIREBASE_TOKEN}}
