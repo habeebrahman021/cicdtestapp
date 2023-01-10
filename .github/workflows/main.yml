@@ -26,6 +26,7 @@ jobs:
           FLUTTER_BUILD_MODE: release
   deploy:
     runs-on: ubuntu-latest
+    needs: build
     steps:
       - name: Setup Firebase CLI
         run: npm install -g firebase-tools
