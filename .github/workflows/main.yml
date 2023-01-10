@@ -1,40 +1,26 @@
-name: Flutter CI
+name: Test and Deploy Flutter App
+
 on:
-  push:
+  pushes:
     branches:
-    - main
+      - main
+
 jobs:
-  build:
+  build_and_deploy:
     runs-on: ubuntu-latest
     steps:
-    # Setup Java environment.
-      - name: Setup Java Environment
-        uses: actions/checkout@v1
-      - uses: actions/setup-java@v1
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
         with:
-          java-version: '12.x'
+          channel: stable
+      - name: Install Dependencies
+        run: flutter pub get
+      - name: Run Test
+        run: flutter test
+      - name: Build APK
+        run: flutter build apk
+        env:
+          FLUTTER_BUILD_MODE: release
 
-    # Setup the flutter environment.
-    - uses: subosito/flutter-action@v1
-      with:
-        channel: 'beta' # 'dev', 'alpha', default to: 'stable'
-        # flutter-version: '1.12.x' # you can also specify exact version of flutter
-
-    # Get flutter dependencies.
-    - run: flutter pub get
-
-
-    # Statically analyze the Dart code for any errors.
-    - run: flutter analyze .
-
-    # Run widget tests for our flutter project.
-    - run: flutter test
-
-    # Build apk.
-    - run: flutter build apk
-
-    # Upload generated apk to the artifacts.
-    - uses: actions/upload-artifact@v1
-      with:
-        name: release-apk
-        path: build/app/outputs/apk/release/app-release.apk
