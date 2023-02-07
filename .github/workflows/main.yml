@@ -24,11 +24,18 @@ jobs:
         run: flutter build apk
         env:
           FLUTTER_BUILD_MODE: release
-      - name: Setup Firebase CLI
-        run: npm install -g firebase-tools
-        env:
-          GOOGLE_APPLICATION_CREDENTIALS: ${{secrets.GOOGLE_APPLICATION_CREDENTIALS}}
-      - name: Deploy to Firebase App Distribution
-        run: firebase appdistribution:distribute build/app/outputs/apk/release/app-release.apk --app 1:291046357082:android:749c7568a2cdbfa7ca4063
-        env:
-          GOOGLE_APPLICATION_CREDENTIALS: ${{secrets.GOOGLE_APPLICATION_CREDENTIALS}}
+#      - name: Setup Firebase CLI
+#        run: npm install -g firebase-tools
+#        env:
+#          GOOGLE_APPLICATION_CREDENTIALS: ${{secrets.GOOGLE_APPLICATION_CREDENTIALS}}
+      - name: Firebase App Distribution
+        uses: wzieba/Firebase-Distribution-Github-Action@v1.5.0
+        with:
+          appId: ${{secrets.FIREBASE_APP_ID}}
+          serviceCredentialsFileContent: ${{ secrets.CREDENTIAL_FILE_CONTENT }}
+          groups: testers
+          file: build/app/outputs/apk/release/app-release.apk
+#      - name: Deploy to Firebase App Distribution
+#        run: firebase appdistribution:distribute build/app/outputs/apk/release/app-release.apk --app 1:291046357082:android:749c7568a2cdbfa7ca4063
+#        env:
+#          GOOGLE_APPLICATION_CREDENTIALS: ${{secrets.GOOGLE_APPLICATION_CREDENTIALS}}
