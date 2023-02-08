@@ -37,11 +37,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-          uses: actions/checkout@v2
+        uses: actions/checkout@v2
       - name: Get Android Build from artifacts
-          uses: actions/download-artifact@v2
-          with:
-            name: android-release
+        uses: actions/download-artifact@v2
+        with:
+          name: android-release
       - name: Firebase App Distribution
         uses: wzieba/Firebase-Distribution-Github-Action@v1.5.0
         with:
