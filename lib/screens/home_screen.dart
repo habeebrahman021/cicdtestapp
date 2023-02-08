@@ -5,15 +5,20 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Column(
-        children: [
-          const Text('This is a text'),
-          TextButton(
-            onPressed: () {},
-            child: const Text("Submit"),
-          ),
-        ],
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("CICD Test App"),
+      ),
+      body: Center(
+        child: Column(
+          children: [
+            const Text('This is a text'),
+            TextButton(
+              onPressed: () {},
+              child: const Text("Submit"),
+            ),
+          ],
+        ),
       ),
     );
   }
