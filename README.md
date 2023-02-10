@@ -1,4 +1,4 @@
-# cicdtestapp
+# CICD TEST APP
 
 A new Flutter project.
 
