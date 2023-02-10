@@ -48,9 +48,9 @@ jobs:
           name: web-release
 
       - name: Deploy to Firebase
-          uses: w9jds/firebase-action@master
-          with:
-            args: deploy --only hosting --public web-release
-          env:
-            FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
-            PROJECT_ID: default
+        uses: w9jds/firebase-action@master
+        with:
+          args: deploy --only hosting --public web-release
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+          PROJECT_ID: default
