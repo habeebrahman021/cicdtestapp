@@ -6,13 +6,13 @@ void main() {
   testWidgets('should render submit text', (tester) async {
     await tester.pumpWidget(const MaterialApp(home: HomeScreen()));
 
-    expect(find.text('Submit'), findsOneWidget);
+    expect(find.text('SUBMIT'), findsOneWidget);
   });
 
-  testWidgets('should render submit text', (tester) async {
+  testWidgets('should render coming soon text', (tester) async {
     await tester.pumpWidget(const MaterialApp(home: HomeScreen()));
 
-    expect(find.text('This is a text'), findsOneWidget);
+    expect(find.text('Coming Soon'), findsOneWidget);
   });
 
 }
