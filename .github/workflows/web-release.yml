@@ -26,7 +26,8 @@ jobs:
 
       - name: Get dependencies
         run: flutter pub get
-
+      - name: Run Test
+          run: flutter test
       - name: Generate Web Build
         run: flutter build web --release --web-renderer html
       - name: Deploy to Firebase Hosting
