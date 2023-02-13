@@ -9,15 +9,18 @@ class HomeScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text("CICD Test App"),
       ),
-      body: Center(
-        child: Column(
-          children: [
-            const Text('This is a text'),
-            TextButton(
-              onPressed: () {},
-              child: const Text("Submit"),
-            ),
-          ],
+      body: Container(
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Text('This is a text 2'),
+              TextButton(
+                onPressed: () {},
+                child: const Text("Submit"),
+              ),
+            ],
+          ),
         ),
       ),
     );
