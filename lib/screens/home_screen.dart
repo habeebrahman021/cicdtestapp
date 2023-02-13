@@ -9,16 +9,18 @@ class HomeScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text("Test App"),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Text('Coming Soon'),
-            TextButton(
-              onPressed: () {},
-              child: const Text("SUBMIT"),
-            ),
-          ],
+      body: Container(
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Text('Coming Soon'),
+              TextButton(
+                onPressed: () {},
+                child: const Text("SUBMIT"),
+              ),
+            ],
+          ),
         ),
       ),
     );
