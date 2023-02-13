@@ -1,4 +1,4 @@
-name: Test and Deploy Flutter App
+name: Android Build & Deploy
 
 on:
   push:
