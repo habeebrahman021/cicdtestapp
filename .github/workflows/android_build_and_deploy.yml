@@ -48,4 +48,5 @@ jobs:
           appId: ${{secrets.FIREBASE_APP_ID}}
           serviceCredentialsFileContent: ${{ secrets.CREDENTIAL_FILE_CONTENT }}
           groups: testers
+          releaseNotes: ${{ github.event.head_commit.message }}
           file: app-release.apk
