@@ -7,17 +7,20 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("CICD Test App"),
+        title: const Text("Test App"),
       ),
-      body: Center(
-        child: Column(
-          children: [
-            const Text('This is a text'),
-            TextButton(
-              onPressed: () {},
-              child: const Text("Submit"),
-            ),
-          ],
+      body: Container(
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Text('Coming Soon'),
+              TextButton(
+                onPressed: () {},
+                child: const Text("SUBMIT"),
+              ),
+            ],
+          ),
         ),
       ),
     );
