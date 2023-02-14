@@ -10,15 +10,15 @@ jobs:
   test:
     name: Setup and Run Complete Test
     runs-on: ubuntu-latest
-      steps:
-        - name: Checkout
-          uses: actions/checkout@v3
-        - name: Setup Flutter
-          uses: subosito/flutter-action@v2
-          with:
-            channel: 'stable'
-            cache: true
-        - name: Install Dependencies
-          run: flutter pub get
-        - name: Run Test
-          run: flutter test
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+          cache: true
+      - name: Install Dependencies
+        run: flutter pub get
+      - name: Run Test
+        run: flutter test
