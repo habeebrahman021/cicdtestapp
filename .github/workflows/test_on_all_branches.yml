@@ -1,4 +1,4 @@
-name: Run Test on Merge/Push
+name: Run Test on Working Branches
 
 on:
   push:
@@ -8,7 +8,7 @@ on:
       - bugfix/**
 jobs:
   test:
-    name: Setup and Run Complete Test
+    name: Run Complete Test
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
