@@ -1,0 +1,32 @@
+name: Build and Distribute iOS App
+
+on:
+  push:
+    branches:
+      - ios-test
+
+jobs:
+  build_and_distribute:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v1
+        with:
+          flutter-version: '2.10.1'
+      - name: Install dependencies
+        run: flutter pub get
+      - name: Build iOS app
+        run: flutter build ios --release --no-codesign
+      - name: Archive iOS app
+        run: xcodebuild archive -workspace ios/Runner.xcworkspace -scheme Runner -archivePath build/ios/Runner.xcarchive -configuration Release -quiet
+      - name: Export iOS app
+        run: xcodebuild -exportArchive -archivePath build/ios/Runner.xcarchive -exportOptionsPlist export_options.plist -exportPath build/ios
+      - name: Firebase App Distribution
+          uses: wzieba/Firebase-Distribution-Github-Action@v1.5.0
+          with:
+            appId: ${{secrets.FIREBASE_APP_ID}}
+            serviceCredentialsFileContent: ${{ secrets.CREDENTIAL_FILE_CONTENT }}
+            groups: testers
+            releaseNotes: ${{ github.event.head_commit.message }}
+            file: build/ios/Runner.ipa
